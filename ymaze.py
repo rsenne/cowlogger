@@ -26,9 +26,7 @@ def ymazecount(filepath):
     ymazedata = ymazedata.replace(" ", "")
     ymazedata = ''.join(i for i in ymazedata if not i.isdigit())
     ymazedata = ymazedata.strip()  # remove that pesky trailing whitespace
-    # this drops the first arm entry
-    ymazedata = ymazedata[1:]
-    print(ymazedata)
+    print(ymazedata)  # sanity check
     # this is hardcoded as these permutations should never change
     # i'm calling these codons because it seemed analagous
     codons = ['ABC', 'ACB', 'BAC', 'BCA', 'CAB', 'CBA']
@@ -40,8 +38,8 @@ def ymazecount(filepath):
         count = ymazedata.count(codon)
         codon_counts[codon] = count
     m = sum(codon_counts.values())  # total number of codons
-    n = len(ymazedata)  # no need to subtract 1, already sliced
-    y_maze_ratio = m / n  # calculate y-maze ratio
+    n = len(ymazedata)  # "no need to subtract 1, already sliced" -me, completely wrong, subtract your 1
+    y_maze_ratio = m / (n - 1)  # calculate y-maze ratio, peep the 1
     return y_maze_ratio
 
 
