@@ -2,7 +2,7 @@
 """
 this program is meant to work with the hand-scoring software 'cowlogger' when used in conjunction with the Y-maze test.
 The purpose of this program is to calculate the (m)/(n-1) ratio, where m is the total number of times a mouse visits all
-three arms of the Y-maze in aa non-repeating fashion i.e. the permutation of arm visits, and where N is the total number
+three arms of the Y-maze in a non-repeating fashion i.e. the permutation of arm visits, and where N is the total number
 of arm visits.
 """
 
@@ -61,7 +61,7 @@ def main():
         results.append(my_ratio)
     final_results = {'Animal': filepaths, 'Ratio': results}  # dictionary that will store all ratios for each animal
     df = pd.DataFrame(final_results, columns=('Animal', 'Ratio'))  # create dataframe of results
-    df.to_csv('y_maze_final')  # write to working directory, i can add a statement fiu you want to save elsewhere
+    df.to_csv('y_maze_final')  # write to working directory, i can add a statement if you want to save elsewhere
 
 
 if __name__ == "__main__":
