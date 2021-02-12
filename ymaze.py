@@ -20,9 +20,11 @@ def ymazecount(filepath):
     # read your cowlog data as a string
     # i'm aware how this is an incredibly inelegant solution and i should have avoided the str datatype
     # lucky for me this works and that's all that matters to me
-    ymazedata = pd.read_csv(filepath, header=None, dtype=str, usecols=[1], skiprows=1)
+    ymazedata = pd.read_csv(filepath)
+    ymazedata = ymazedata[ymazedata.time < 600]
+    ymazedata = pd.DataFrame(ymazedata.iloc[:, 1])
     ymazedata = ymazedata.transpose()
-    ymazedata = ymazedata.to_string()
+    ymazedata = ymazedata.to_string(index=False)
     ymazedata = ymazedata.replace(" ", "")
     ymazedata = ''.join(i for i in ymazedata if not i.isdigit())
     ymazedata = ymazedata.strip()  # remove that pesky trailing whitespace
@@ -64,3 +66,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
